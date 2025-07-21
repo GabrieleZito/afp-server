@@ -3,7 +3,7 @@ const router = express.Router();
 const { getEvents } = require("../API/ticketmaster");
 
 router.get("/ticketmaster", async (req, res) => {
-    const result = await getEvents(0);
+    const result = await getEvents("IT", 0);
     console.log(result);
     res.send(result);
 });

@@ -7,3 +7,21 @@ exports.prova = async () => {
         print(error);
     }
 };
+
+exports.getUserById = async (id) => {
+    try {
+        const user = await UserProfile.findByPk(id);
+        return user;
+    } catch (error) {
+        throw error;
+    }
+};
+
+exports.getUserByUsername = async (username) => {
+    try {
+        const user = await UserProfile.findOne({ where: { username: username } });
+        return user;
+    } catch (error) {
+        throw error;
+    }
+};

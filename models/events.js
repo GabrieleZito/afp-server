@@ -38,3 +38,5 @@ Events.init(
     },
     { sequelize }
 );
+
+module.exports = Events
