@@ -15,6 +15,7 @@ router.get("/id/:id", async (req, res) => {
 router.get("/username/:username", async (req, res) => {
     const username = req.params["username"];
     const user = await getUserByUsername(username);
+    console.log(user)
     res.json(user);
 });
 
