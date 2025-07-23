@@ -8,7 +8,7 @@ const app = express();
 
 //initialize database
 const sequelize = require("./config/sequelize.js");
-sequelize.sync({ force: true, alter: false }).then(() => console.log("DB Connected"));
+sequelize.sync({ force: false, alter: false }).then(() => console.log("DB Connected"));
 
 //routes
 const userRouter = require("./routes/users.js");
