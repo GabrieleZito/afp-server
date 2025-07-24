@@ -1,5 +1,7 @@
 const { Model, STRING, DATEONLY, TIME, INTEGER, ENUM } = require("sequelize");
 const sequelize = require("../config/sequelize");
+const UserProfile = require("./userProfile");
+const { Events } = require("pg");
 
 class Invites extends Model {}
 
@@ -9,7 +11,7 @@ Invites.init(
             type: INTEGER,
             allowNull: false,
             references: {
-                model: "UserProfile",
+                model: UserProfile,
                 key: "id",
             },
         },
@@ -17,7 +19,7 @@ Invites.init(
             type: INTEGER,
             allowNull: false,
             references: {
-                model: "UserProfile",
+                model: UserProfile,
                 key: "id",
             },
         },
@@ -25,7 +27,7 @@ Invites.init(
             type: INTEGER,
             allowNull: false,
             references: {
-                model: "Events",
+                model: Events,
                 key: "id",
             },
         },

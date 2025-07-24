@@ -19,7 +19,7 @@ UserProfile.hasMany(Invites, { foreignKey: "invitedUserId", as: "receivedInvites
 Invites.belongsTo(UserProfile, { foreignKey: "inviterUserId", as: "inviter" });
 Invites.belongsTo(UserProfile, { foreignKey: "invitedUserId", as: "invited" });
 
-Events.hasMany(Invitation, {
+Events.hasMany(Invites, {
     foreignKey: "eventId",
     as: "invitations",
 });
