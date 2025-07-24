@@ -13,7 +13,6 @@ sequelize.sync({ force: false, alter: false }).then(() => console.log("DB Connec
 //routes
 const userRouter = require("./routes/users.js");
 const eventRouter = require("./routes/events.js");
-const UserProfile = require("./models/userProfile.js");
 
 app.get("/prova", async (req, res) => {
     

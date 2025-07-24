@@ -25,3 +25,12 @@ exports.getUserByUsername = async (username) => {
         throw error;
     }
 };
+
+exports.createUser = async (username) => {
+    try {
+        const user = await UserProfile.create({ username: username });
+        return user;
+    } catch (e) {
+        throw e;
+    }
+};

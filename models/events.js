@@ -1,32 +1,25 @@
-const { Model, STRING, DATEONLY, TIME } = require("sequelize");
+const { Model, STRING, DATEONLY, TIME, DOUBLE } = require("sequelize");
 const sequelize = require("../config/sequelize");
 
 class Events extends Model {}
 
 Events.init(
     {
-        name: {
+        eventId: {
             type: STRING,
             allowNull: false,
         },
-        ticketMasterId: {
+        title: {
             type: STRING,
-            allowNull: true,
+            allowNull: false,
         },
-        urlTicketMaster: {
+        description: {
             type: STRING,
+            allowNull: true
         },
-        image1: {
+        category: {
             type: STRING,
-            allowNull: true,
-        },
-        image2: {
-            type: STRING,
-            allowNull: true,
-        },
-        image3: {
-            type: STRING,
-            allowNull: true,
+            allowNull: false,
         },
         startDay: {
             type: DATEONLY,
@@ -35,6 +28,22 @@ Events.init(
         startTime: {
             type: TIME,
         },
+        latitude: {
+            type: DOUBLE,
+            allowNull: false,
+        },
+        longitude: {
+            type: DOUBLE,
+            allowNull: false,
+        },
+        place: {
+            type: STRING,
+            allowNull: true
+        },
+        address: {
+            type: STRING,
+            allowNull: true
+        }
     },
     { sequelize }
 );

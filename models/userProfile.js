@@ -7,11 +7,11 @@ UserProfile.init(
     {
         firstName: {
             type: STRING,
-            allowNull: false,
+            allowNull: true,
         },
         lastName: {
             type: STRING,
-            allowNull: false,
+            allowNull: true,
         },
         propic: {
             type: STRING,
@@ -19,15 +19,16 @@ UserProfile.init(
         },
         email: {
             type: STRING,
-            allowNull: false,
+            allowNull: true,
         },
         username: {
             type: STRING,
             allowNull: false,
+            unique: true,
         },
         passwordHash: {
             type: STRING,
-            allowNull: false,
+            allowNull: true,
         },
     },
     {
