@@ -33,13 +33,47 @@ router.get("/predicthq/palermo", async (req, res) => {
 });
 
 router.get("/all", async (req, res) => {
-    var tm = await getEvents("IT", 0, 100);
+    //var tm = await getEvents("IT", 0, 100);
     var phq = await getEventsPalermo();
 
-    tm = tm["_embedded"].events;
+    //tm = tm["_embedded"].events;
     phq = phq.results;
 
-    res.json({ tm, phq });
+    /* tm = tm.map(e => {
+        //console.log(e._embedded.venues[0])
+        return {
+            title: e.name,
+            url: e.url,
+            id: e.id,
+            description: "",
+            images: e.images,
+            startDate: e.dates.start.localDate,
+            startTime: e.dates.start.localTime,
+            place: e._embedded.venues[0].name,
+            postalCode: e._embedded.venues[0].postalCode,
+            category: e.classifications[0].segment.name
+        }
+    }) */
+
+    phq = phq.map(e => {
+        const [date, time] = e.start_local.split('T');
+        return {
+            id: e.id,
+            title: e.title,
+            description: e.description,
+            category: e.category,
+            startDate: date,
+            startTime: time,
+            latitude: e.location[1],
+            longitude: e.location[0],
+            place: e.entities[0]?.name,
+            address: e.geo.address.formatted_address,
+            postalCode: e.geo.address.postCode
+        }
+    })
+
+
+    res.json(phq);
 });
 
 module.exports = router;
