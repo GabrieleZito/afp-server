@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { getEvents } = require("../API/ticketmaster");
 const { getEventsByPosition, getEventsPalermo } = require("../API/predictHQ");
+const fs = require("fs");
 
 router.get("/ticketmaster/all/:countryCode/:page/:size", async (req, res) => {
     const countryCode = req.params["countryCode"];
@@ -55,8 +56,8 @@ router.get("/all", async (req, res) => {
         }
     }) */
 
-    phq = phq.map(e => {
-        const [date, time] = e.start_local.split('T');
+    phq = phq.map((e) => {
+        const [date, time] = e.start_local.split("T");
         return {
             id: e.id,
             title: e.title,
@@ -68,12 +69,45 @@ router.get("/all", async (req, res) => {
             longitude: e.location[0],
             place: e.entities[0]?.name,
             address: e.geo.address.formatted_address,
-            postalCode: e.geo.address.postCode
-        }
-    })
-
+            postalCode: e.geo.address.postCode,
+        };
+    });
 
     res.json(phq);
+});
+
+router.post("/newEvent/:eventId/:creator", async (req, res) => {
+    const eventId = req.params["eventId"];
+    const creator = req.params["creator"];
+    const event = req.body;
+    let rawdata = fs.readFileSync(__dirname + "/../database/events.json");
+    let events = JSON.parse(rawdata);
+    events[`${eventId}-${creator}`] = {
+        id: "adwawd",
+        nome: "adwwdad",
+        titolo: "awddwadfaf",
+        users: [{ username: creator, participate: true }],
+    };
+    const data = JSON.stringify(events);
+    fs.writeFileSync(__dirname + "/../database/events.json", data);
+    console.log(events);
+    res.json(events);
+});
+
+router.get("/:eventId/:inviter/:invited/:participate", async (req, res) => {
+    const eventId = req.params["eventId"];
+    const inviter = req.params["inviter"];
+    const invited = req.params["invited"];
+    const participate = req.params["participate"];
+
+    const invitecode = `${eventId}-${inviter}`;
+    let rawdata = fs.readFileSync(__dirname + "/../database/events.json");
+    let events = JSON.parse(rawdata);
+    events[invitecode].users.push({ username: invited, participate: participate });
+
+    const data = JSON.stringify(events);
+    fs.writeFileSync(__dirname + "/../database/events.json", data);
+    res.json(events);
 });
 
 module.exports = router;

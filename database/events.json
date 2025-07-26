@@ -1,0 +1,17 @@
+{
+    "ideventoapwdapw-pippo": {
+        "id": "adwawd",
+        "nome": "adwwdad",
+        "titolo": "awddwadfaf",
+        "users": [
+            { "username": "pippo", "participate": true },
+            { "username": "pino", "participate": "true" }
+        ]
+    },
+    "awdawdawdawdawdawdawddaw-pippo": {
+        "id": "adwawd",
+        "nome": "adwwdad",
+        "titolo": "awddwadfaf",
+        "users": [{ "username": "pippo", "participate": true }]
+    }
+}
