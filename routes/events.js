@@ -76,6 +76,7 @@ router.get("/all", async (req, res) => {
     res.json(phq);
 });
 
+//CREATE EVENT
 router.post("/newEvent/:eventId/:creator", async (req, res) => {
     const eventId = req.params["eventId"];
     const creator = req.params["creator"];
@@ -94,6 +95,7 @@ router.post("/newEvent/:eventId/:creator", async (req, res) => {
     res.json(events);
 });
 
+//JOIN EVENT
 router.get("/:eventId/:inviter/:invited/:participate", async (req, res) => {
     const eventId = req.params["eventId"];
     const inviter = req.params["inviter"];
@@ -103,11 +105,17 @@ router.get("/:eventId/:inviter/:invited/:participate", async (req, res) => {
     const invitecode = `${eventId}-${inviter}`;
     let rawdata = fs.readFileSync(__dirname + "/../database/events.json");
     let events = JSON.parse(rawdata);
-    events[invitecode].users.push({ username: invited, participate: participate });
-
-    const data = JSON.stringify(events);
-    fs.writeFileSync(__dirname + "/../database/events.json", data);
-    res.json(events);
+    if (events[invitecode]) {
+        events[invitecode].users.push({ username: invited, participate: participate });
+        const data = JSON.stringify(events);
+        fs.writeFileSync(__dirname + "/../database/events.json", data);
+        res.json(true);
+    } else {
+        res.json(false);
+    }
 });
+
+//SEARCH EVENT
+router.get("/")
 
 module.exports = router;

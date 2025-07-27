@@ -5,7 +5,8 @@
         "titolo": "awddwadfaf",
         "users": [
             { "username": "pippo", "participate": true },
-            { "username": "pino", "participate": "true" }
+            { "username": "pino", "participate": "true" },
+            { "username": "giuseppe", "participate": "false" }
         ]
     },
     "awdawdawdawdawdawdawddaw-pippo": {
