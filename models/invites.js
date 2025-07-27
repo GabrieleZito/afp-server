@@ -1,4 +1,4 @@
-const { Model, STRING, DATEONLY, TIME, INTEGER, ENUM } = require("sequelize");
+/* const { Model, STRING, DATEONLY, TIME, INTEGER, ENUM } = require("sequelize");
 const sequelize = require("../config/sequelize");
 const UserProfile = require("./userProfile");
 const { Events } = require("pg");
@@ -40,3 +40,4 @@ Invites.init(
 );
 
 module.exports = Invites;
+ */

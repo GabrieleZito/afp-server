@@ -1,9 +1,9 @@
-const Events = require("./events");
+/* const Events = require("./events");
 const Interests = require("./interests");
 const Invites = require("./invites");
 const UserProfile = require("./userProfile");
 
-/* UserProfile.belongsToMany(Interests, {
+UserProfile.belongsToMany(Interests, {
     through: "UserInterests",
     foreignKey: "user_id",
 });
@@ -11,7 +11,7 @@ const UserProfile = require("./userProfile");
 Interests.belongsToMany(UserProfile, {
     through: "UserInterests",
     foreignKey: "interest_id",
-}); */
+}); 
 
 UserProfile.hasMany(Invites, { foreignKey: "inviterUserId", as: "sentInvites" });
 UserProfile.hasMany(Invites, { foreignKey: "invitedUserId", as: "receivedInvites" });
@@ -48,3 +48,4 @@ module.exports = {
     Interests,
     Events,
 };
+ */

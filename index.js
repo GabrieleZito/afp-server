@@ -7,16 +7,13 @@ const PORT = 3000;
 const app = express();
 
 //initialize database
-const sequelize = require("./config/sequelize.js");
-sequelize.sync({ force: true, alter: false }).then(() => console.log("DB Connected"));
+//const sequelize = require("./config/sequelize.js");
+//sequelize.sync({ force: true, alter: false }).then(() => console.log("DB Connected"));
 
 //routes
 const userRouter = require("./routes/users.js");
 const eventRouter = require("./routes/events.js");
 
-app.get("/prova", async (req, res) => {
-    
-});
 
 app.use("/users", userRouter);
 app.use("/events", eventRouter);

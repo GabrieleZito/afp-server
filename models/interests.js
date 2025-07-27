@@ -1,4 +1,4 @@
-const { Model, STRING } = require("sequelize");
+/* const { Model, STRING } = require("sequelize");
 const sequelize = require("../config/sequelize");
 
 class Interests extends Model {}
@@ -16,3 +16,4 @@ Interests.init(
 );
 
 module.exports = Interests;
+ */

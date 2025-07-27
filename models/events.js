@@ -1,4 +1,4 @@
-const { Model, STRING, DATEONLY, TIME, DOUBLE } = require("sequelize");
+/* const { Model, STRING, DATEONLY, TIME, DOUBLE } = require("sequelize");
 const sequelize = require("../config/sequelize");
 
 class Events extends Model {}
@@ -49,3 +49,4 @@ Events.init(
 );
 
 module.exports = Events
+ */

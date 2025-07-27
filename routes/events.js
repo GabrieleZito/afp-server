@@ -116,6 +116,6 @@ router.get("/:eventId/:inviter/:invited/:participate", async (req, res) => {
 });
 
 //SEARCH EVENT
-router.get("/")
+//router.get("/")
 
 module.exports = router;
