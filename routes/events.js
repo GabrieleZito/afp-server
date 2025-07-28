@@ -94,17 +94,15 @@ router.post("/newEvent", async (req, res) => {
 });
 
 //JOIN EVENT
-router.get("/:eventId/:inviter/:invited/:participate", async (req, res) => {
-  const eventId = req.params["eventId"];
-  const inviter = req.params["inviter"];
+router.get("/:inviteCode/:invited/:participate", async (req, res) => {
+  const inviteCode = req.params["inviteCode"];
   const invited = req.params["invited"];
   const participate = req.params["participate"];
 
-  const invitecode = `${eventId}-${inviter}`;
   let rawdata = fs.readFileSync(__dirname + "/../database/events.json");
   let events = JSON.parse(rawdata);
-  if (events[invitecode]) {
-    events[invitecode].users.push({ username: invited, participate: participate });
+  if (events[inviteCode]) {
+    events[inviteCode].users.push({ username: invited, participate: participate });
     const data = JSON.stringify(events);
     fs.writeFileSync(__dirname + "/../database/events.json", data);
     res.json(true);
